@@ -139,6 +139,7 @@ Before you can use Capistrano to deploy, you must configure the `config/deploy.r
 | `:magento_deploy_chcon_dirs`   | `['var']`         | Default list of directories on which to recursively set an SELinux context type
 | `:magento_deploy_chcon_type`   | `httpd_sys_rw_content_t` | Default SELinux context type to set on directories which should be writeable by application
 | `:magento_deploy_strategy`     | `nil`    | Can be `quick`, `standard` or `compact`
+| `:magento_deploy_options`      | `[]`     | Allow you to add additionnal arguments to the `setup:static-content:deploy` task like `--quiet` when you have more than one language to deploy
 
 #### Example Usage
 

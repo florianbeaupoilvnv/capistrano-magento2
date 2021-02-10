@@ -352,6 +352,13 @@ namespace :magento do
               deploy_jobs = nil
             end
 
+            deploy_options = fetch(:magento_deploy_options)
+            if deploy_options
+              deploy_options = deploy_options.join(' ').prepend(' ')
+            else
+              deploy_options = nil
+            end
+
             # Static content compilation strategies that can be one of the following:
             # quick (default), standard (like previous versions) or compact
             compilation_strategy = fetch(:magento_deploy_strategy)
@@ -360,7 +367,7 @@ namespace :magento do
             end
 
             within release_path do
-              execute :magento, "setup:static-content:deploy#{compilation_strategy}#{deploy_jobs}#{deploy_languages}#{deploy_themes}"
+              execute :magento, "setup:static-content:deploy#{compilation_strategy}#{deploy_jobs}#{deploy_languages}#{deploy_themes}#{deploy_options}"
             end
 
             # Set the deployed_version of static content to ensure it matches across all hosts
